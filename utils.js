@@ -57,15 +57,22 @@ const getShoppingCart = (shoppingCart) => {
 
 const addItemToCart = (item, shoppingCart) => {
   shoppingCart.push(item)
+  return shoppingCart
 }
 
 const getNumItemsInCart = (shoppingCart) => {
   return shoppingCart.length
 }
 
-const removeItemFromCart = (item, cart) => {
-  cart.splice(item, 1);
+const removeItemFromCart = (itemToRemove, cart) => {
+  const index = cart.findIndex((item) => item.name === itemToRemove.name);
+  if (index > -1) {
+    cart.splice(index, 1);
+  }
+
+  return cart;
 };
+
 
 const totalCartCost = (cart) => {
   total = 0;
